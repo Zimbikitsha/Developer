@@ -1,3 +1,4 @@
+
 :root {
   --primary-color: #6c63ff;
   --secondary-color: #ff6584;
@@ -7,9 +8,12 @@
   --page-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
 }
 
-
 * {
   box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 body {
@@ -22,23 +26,20 @@ body {
 
 
 
-.navigation {
-  display: flex;
-  justify-content: flex-end;
-  gap: 30px;
-  padding: 20px 8%;
-}
-
-.navigation a {
+.navbar-brand {
   color: var(--primary-color);
-  text-decoration: none;
-  font-weight: bold;
 }
 
-.navigation a:hover {
-  color: var(--secondary-color);
-  text-decoration: underline;
+.nav-link {
+  font-weight: 500;
+  transition: color 0.3s ease;
 }
+
+.nav-link:hover,
+.nav-link.active {
+  color: var(--primary-color) !important;
+}
+
 
 
 .hero,
@@ -66,65 +67,34 @@ body {
 }
 
 
-.introduction,
-.skills,
-.about-content {
+.projects {
   max-width: 1100px;
   margin: 0 auto;
-  padding: 25px;
 }
 
-.introduction h2,
-.skills h2 {
-  text-align: center;
-  font-size: 28px;
-  color: var(--primary-color);
-  margin-bottom: 30px;
+.project-image {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  transition: transform 0.3s ease;
 }
 
-
-.card-container,
-.about-content {
-  display: flex;
-  justify-content: space-evenly;
-  gap: 25px;
-  align-items: stretch;
+.project-image:hover {
+  transform: scale(1.02);
 }
 
 
-.info-card {
-  flex: 1;
-  border: 1px solid #e0d6f5;
-  border-radius: 8px;
-  background-color: var(--card-background);
-  padding: 25px;
-  box-shadow: var(--page-shadow);
+
+.about-image-section {
+  max-width: 100%;
 }
 
-.info-card h2,
-.info-card h3 {
-  color: var(--primary-color);
-  text-align: center;
+.profile-image {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
 }
 
-.info-card p {
-  text-align: left;
-}
-
-
-.skill-list {
-  display: flex;
-  justify-content: space-evenly;
-  flex-wrap: wrap;
-  gap: 15px;
-}
-
-.skill-list span {
-  background-color: var(--tertiary-color);
-  color: white;
-  padding: 10px 18px;
-  border-radius: 5px;
-}
 
 
 .contact-section {
@@ -144,11 +114,13 @@ body {
   margin: 15px auto;
 }
 
-
 .email-link {
+  display: inline-block;
   color: var(--primary-color);
   font-size: 20px;
   font-weight: bold;
+  overflow-wrap: anywhere;
+  transition: color 0.3s ease;
 }
 
 .email-link:visited {
@@ -159,21 +131,6 @@ body {
   color: var(--secondary-color);
 }
 
-
-.back-link {
-  text-align: center;
-  margin: 35px;
-}
-
-.back-link a {
-  color: var(--primary-color);
-  text-decoration: none;
-}
-
-.back-link a:hover {
-  color: var(--secondary-color);
-  text-decoration: underline;
-}
 
 
 footer {
@@ -186,13 +143,18 @@ footer a {
 }
 
 
-@media (max-width: 700px) {
 
-  .navigation {
-    justify-content: center;
-    gap: 20px;
-    padding: 15px;
-  }
+.btn {
+  transition: transform 0.3s ease;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+}
+
+
+
+@media (max-width: 767px) {
 
   .hero,
   .about-hero {
@@ -203,31 +165,74 @@ footer a {
     font-size: 23px;
   }
 
+  .hero h1,
+  .about-hero h1 {
+    font-size: clamp(35px, 9vw, 52px);
+  }
+
   .subtitle {
     font-size: 16px;
   }
 
-  .card-container,
-  .about-content {
-    flex-direction: column;
+  .hero-buttons {
+    align-items: center;
   }
 
-  .info-card {
+  .hero-buttons .btn {
     width: 100%;
+    max-width: 260px;
   }
 
-  .introduction,
-  .skills,
-  .about-content {
-    padding: 15px;
+  .projects .row {
+    text-align: center;
+    margin-top: 25px !important;
+    margin-bottom: 25px !important;
+  }
+
+  .projects h2 {
+    font-size: 30px;
+  }
+
+  .projects p {
+    font-size: 17px;
   }
 
   .contact-section {
     padding: 30px 15px;
   }
 
+  .contact-section h2 {
+    font-size: 26px;
+  }
+
   .email-link {
-    font-size: 17px;
-    overflow-wrap: anywhere;
+    font-size: 17px !important;
+  }
+
+  footer {
+    font-size: 14px;
   }
 }
+
+
+@media (max-width: 400px) {
+
+  .navbar-brand {
+    font-size: 19px !important;
+  }
+
+  .hero h1,
+  .about-hero h1 {
+    font-size: 35px;
+  }
+
+  .projects h2 {
+    font-size: 26px;
+  }
+
+  .projects .btn {
+    font-size: 15px;
+  }
+
+}
+
